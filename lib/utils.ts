@@ -6,13 +6,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const getEnv = () => {
-  const bemoodleApiUrl = process.env.NEXT_PUBLIC_BEMOODLE_API_URL;
+  const BEMOODLE_API_URL = process.env.NEXT_PUBLIC_BEMOODLE_API_URL;
 
-  if (!bemoodleApiUrl) {
+  if (!BEMOODLE_API_URL) {
     throw new Error("NEXT_PUBLIC_BEMOODLE_API_URL is not defined in the environment variables");
   }
 
   return {
-    bemoodleApiUrl,
+    BEMOODLE_API_URL,
   };
 };

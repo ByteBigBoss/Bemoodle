@@ -1,3 +1,4 @@
+"use client"
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import Navbar from "@/components/nav/Navbar";
@@ -5,18 +6,25 @@ import Footer from "@/components/foo/Footer";
 import { poppins } from "@/lib/fonts";
 import { SiteMetadata } from "@/config/site";
 
-import "@/style/globals.css";
+import { PrimeReactProvider } from 'primereact/api';
 
-export const metadata: Metadata = {
-  title: SiteMetadata.title,
-  description: SiteMetadata.description,
-};
+import "@/style/globals.css";
+import StatusNav from "@/components/nav/StatusNav";
+import { usePathname } from "next/navigation";
+
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const path = usePathname();
+
+  const restrictedPaths = ['/auth/login', '/auth/signup'];
+
+  const isRestrictedPath = restrictedPaths.includes(path);
+
   return (
     <html lang="en"
       className={`scroll-smooth`}
@@ -27,14 +35,19 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
+
 
         >
-
-          <Navbar />
-          <main className=' mx-auto w-full h-auto'>{children}</main>
-          <Footer />
-
+          <PrimeReactProvider>
+          {!isRestrictedPath && (
+              <div className="w-full h-auto fixed top-0 z-[9999]">
+                <StatusNav />
+                <Navbar />
+              </div>
+            )}
+            <main className=' mx-auto w-full h-auto'>{children}</main>
+            <Footer />
+          </PrimeReactProvider>
         </ThemeProvider>
 
       </body>

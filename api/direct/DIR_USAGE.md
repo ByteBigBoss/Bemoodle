@@ -1,0 +1,1 @@
+This dir will be use to direct calling to Backend API that data retrieval is straightforward and doesn't require additional processing or security checks.

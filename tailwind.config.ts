@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const {nextui} = require("@nextui-org/react");
 
 const config: Config = {
     darkMode: ["class"],
@@ -6,6 +7,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+	"./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
 	screens: {
@@ -29,7 +31,13 @@ const config: Config = {
   		},
   		colors: {
 
-			myColor: "var(--my-color)",
+			moodleYellow:"var(--moodle-yellow)",
+			moodleDarkBlue:"var(--moodle-dark-blue)",
+			moodleCyan:"var(--moodle-cyan)",
+			moodleOrange:"var(--moodle-orange)",
+			moodleSlate:"var(--moodle-slate)",
+			moodleShadeOrange:"var(--moodle-shade-orange)",
+			moodleBlue:"var(--moodle-blue)",
 
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -74,6 +82,6 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), nextui()],
 };
 export default config;

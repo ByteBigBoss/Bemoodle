@@ -1,5 +1,5 @@
 export const SiteMetadata = {
-    title: "Bemoodle",
+    title: "Bemoodle | Artisan Marketplace",
     description: "A simple and modern Artisan Marketplace.",
     author: "Nethmina Sandaruwan",
     url: "https://bemoodle.com",

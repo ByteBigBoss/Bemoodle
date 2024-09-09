@@ -49,9 +49,15 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --my-color: #000;
+    --moodle-yellow: #FFD700;
+    --moodle-dark-blue: #003366;
+    --moodle-cyan: #40E0D0;
+    --moodle-orange: #FF7F50;
+    --moodle-slate:#F5F5F5;
+    --moodle-shade-orange: #FFFCEC;
+    --moodle-blue: #0080FF;
   }
-  .dark {
+  /* .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
@@ -77,7 +83,7 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
     --my-color: #fff;
-  }
+  } */
 }
 
 @layer base {
