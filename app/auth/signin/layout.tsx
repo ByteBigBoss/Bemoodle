@@ -1,9 +1,10 @@
+import { SiteMetadata } from "@/config/site";
 import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Bemoodle | Login",
-  description: "Login to your Bemoodle account.",
+  title: SiteMetadata.pages.signin.title,
+  description: SiteMetadata.pages.signin.des,
 };
 
 export default function LoginLayout({

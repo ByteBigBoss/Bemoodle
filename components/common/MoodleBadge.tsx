@@ -1,4 +1,3 @@
-import { plexMono } from '@/lib/fonts';
 import React from 'react'
 
 interface MoodleBadgeProps {

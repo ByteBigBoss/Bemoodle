@@ -1,6 +1,6 @@
 import React from 'react'
-import MoodleTitleBlock from '../common/MoodleTitleBlock'
-import WrapperBody from '../wrappers/WrapperBody'
+import MoodleTitleBlock from '@/components/common/MoodleTitleBlock'
+import WrapperBody from '@/components/wrappers/WrapperBody'
 
 const MoodleCategories = () => {
   return (

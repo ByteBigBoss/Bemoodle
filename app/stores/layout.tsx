@@ -1,11 +1,20 @@
-import React from 'react'
+import { SiteMetadata } from "@/config/site";
+import type { Metadata } from "next";
 
-const Stores = () => {
+
+export const metadata: Metadata = {
+  title: SiteMetadata.pages.stores.title,
+  description: SiteMetadata.pages.stores.des,
+};
+
+export default function SignUpLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <div>
-      
-    </div>
-  )
+ <section>
+    {children}
+ </section>
+  );
 }
-
-export default Stores

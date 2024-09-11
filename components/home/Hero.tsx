@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import WrapperBody from '../wrappers/WrapperBody'
-import HeroSearch from '../common/HeroSearch'
+import WrapperBody from '@/components/wrappers/WrapperBody'
+import HeroSearch from '@/components/common/HeroSearch'
 
 const Hero = () => {
     return (

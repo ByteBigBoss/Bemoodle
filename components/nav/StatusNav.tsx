@@ -1,5 +1,5 @@
 import React from 'react'
-import WrapperBody from '../wrappers/WrapperBody'
+import WrapperBody from '@/components/wrappers/WrapperBody'
 import Link from 'next/link'
 
 const StatusNav = () => {
@@ -18,7 +18,7 @@ const StatusNav = () => {
         {/* RIGHT */}
         <div className='flex items-center gap-[40px]'>
           <div>Help Center</div>
-          <Link href={'/auth/login'}>Sign In</Link>
+          <Link href={'/auth/signin'}>Sign In</Link>
         </div>
         </div>
 

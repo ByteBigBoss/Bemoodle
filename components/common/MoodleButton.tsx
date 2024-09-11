@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Button } from '../ui/button'
+import { Button } from '@/components/ui/button'
 
 interface MoodleButtonProps {
   children: React.ReactNode;

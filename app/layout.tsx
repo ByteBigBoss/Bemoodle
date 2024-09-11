@@ -11,6 +11,7 @@ import { PrimeReactProvider } from 'primereact/api';
 import "@/style/globals.css";
 import StatusNav from "@/components/nav/StatusNav";
 import { usePathname } from "next/navigation";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
 
   const path = usePathname();
 
-  const restrictedPaths = ['/auth/login', '/auth/signup'];
+  const restrictedPaths = ['/auth/signin', '/auth/signup', '/auth/verify', '/stores/[slug]/'];
 
   const isRestrictedPath = restrictedPaths.includes(path);
 
@@ -45,7 +46,9 @@ export default function RootLayout({
                 <Navbar />
               </div>
             )}
+            <TooltipProvider>
             <main className=' mx-auto w-full h-auto'>{children}</main>
+            </TooltipProvider>
             <Footer />
           </PrimeReactProvider>
         </ThemeProvider>

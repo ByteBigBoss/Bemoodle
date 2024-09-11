@@ -1,6 +1,6 @@
 import React from 'react'
-import MoodleBadge from './MoodleBadge';
-import MoodleButton from './MoodleButton';
+import MoodleBadge from '@/components/common/MoodleBadge';
+import MoodleButton from '@/components/common/MoodleButton';
 import Link from 'next/link';
 
 interface MoodleTitleBlockProps{

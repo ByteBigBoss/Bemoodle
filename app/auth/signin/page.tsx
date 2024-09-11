@@ -12,10 +12,55 @@ import { Eye, EyeOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 import { ScrollPanel } from 'primereact/scrollpanel';
+import { useRouter } from 'next/navigation'
+import { doSignIn } from '@/api/direct/SignIn'
         
 const Login = () => {
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [viewPassword, setViewPassword] = useState(false);
+
+  //ERROR MESSAGE
+  const [error, setError] = useState<any>();
+
+  //NAVIGATION
+  const router = useRouter();
+
+  const handleInput = (value:string)=>{
+
+    if(value.match("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")){
+      setEmail(value);
+      setUsername("");
+    }else{
+      setUsername(value);
+      setEmail("");
+    }
+  };
+
+  const handleSignIn = async () => {
+
+    const SignInDTO = {
+      username,
+      email,
+      password
+    }
+
+    const json: ResDTO = await doSignIn(SignInDTO);
+    
+    if (json.success) {
+      console.log(json);
+      router.push("/", {scroll:true});
+    } else {
+      if (json.content as any === "Unverified") {
+        router.push("/auth/verify", { scroll: true });
+      }else{
+        setError(json.content);
+      }
+      console.log(json);
+    }
+  }
 
   return (
     <div className='w-full min-h-screen flex box-border pr-[480px] wide:pr-[680px] mobile:pr-0 mid:pr-0'>
@@ -46,11 +91,16 @@ const Login = () => {
               className='w-full'
             >
               <div className='w-full flex flex-col mt-12 gap-5 '>
-
+              {error && <div className='text-[14px] font-medium text-rose-500'>{error}</div>}
                 {/* EMAIL */}
                 <div>
                   <div className='text-[14px] pb-2 opacity-60'>Username</div>
-                  <Input type='email' placeholder='Email or Username' className='font-medium' />
+                  <Input type='email' placeholder='Email or Username' className='font-medium' 
+                   onChange={(evt) => {
+                    evt.preventDefault;
+                    handleInput(evt.target.value as string);
+                  }}
+                  />
                 </div>
 
                 <div>
@@ -75,7 +125,7 @@ const Login = () => {
 
                 <div className='flex items-center justify-between pt-6'>
                   <Link href={"/auth/signup"} className='text-[12px] font-medium text-[#262626]'>Not a member?</Link>
-                  <Button className='text-[12px]'>Login</Button>
+                  <Button className='text-[12px]' onClick={handleSignIn}>Sign In</Button>
                 </div>
 
               </div>

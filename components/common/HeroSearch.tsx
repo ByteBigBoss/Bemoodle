@@ -1,5 +1,5 @@
 import React from 'react'
-import MoodleButton from './MoodleButton'
+import MoodleButton from '@/components/common/MoodleButton'
 import { Search } from 'lucide-react'
 
 const HeroSearch = () => {

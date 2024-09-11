@@ -1,8 +1,5 @@
 "use client"
 import { getSystemStatus } from "@/api/direct/getSystemStatus";
-import { ModeToggle } from "@/components/theme/theme-toggle";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Container } from "lucide-react"
 import AnimatedBemoodle from "@/components/animations/AnimatedBemoodle";
@@ -12,12 +9,8 @@ export default function Status() {
   const [status, setStatus] = useState<SystemStatus>();
 
   const handleReq = async () => {
-    try {
       const json = await getSystemStatus();
       setStatus(json);
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
   }
 
   useEffect(() => {

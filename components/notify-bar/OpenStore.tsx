@@ -1,6 +1,6 @@
 import React from 'react'
-import WrapperBody from '../wrappers/WrapperBody'
-import MoodleButton from '../common/MoodleButton'
+import WrapperBody from '@/components/wrappers/WrapperBody'
+import MoodleButton from '@/components/common/MoodleButton'
 
 const OpenStore = () => {
   return (

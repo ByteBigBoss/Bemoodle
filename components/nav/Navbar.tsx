@@ -1,11 +1,11 @@
 import React from 'react'
-import WrapperBody from '../wrappers/WrapperBody'
+import WrapperBody from '@/components/wrappers/WrapperBody'
 import { righteous } from '@/lib/fonts'
-import MoodleButton from '../common/MoodleButton'
-import Cart from '../icons/Cart'
-import MoodleBadge from '../common/MoodleBadge';
+import MoodleButton from '@/components/common/MoodleButton'
+import Cart from '@/components/icons/Cart'
+import MoodleBadge from '@/components/common/MoodleBadge';
 import Link from 'next/link'
-import Bell from '../icons/Bell'
+import Bell from '@/components/icons/Bell'
 
 const Navbar = () => {
   return (

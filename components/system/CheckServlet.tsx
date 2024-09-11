@@ -1,8 +1,8 @@
 "use client"
 import { getHomeContent } from '@/api/direct/getHomeContent';
 import React, { useEffect, useState } from 'react'
-import WrapperBody from '../wrappers/WrapperBody';
-import MoodleBadge from '../common/MoodleBadge';
+import WrapperBody from '@/components/wrappers/WrapperBody';
+import MoodleBadge from '@/components/common/MoodleBadge';
 
 const CheckServlet = () => {
 

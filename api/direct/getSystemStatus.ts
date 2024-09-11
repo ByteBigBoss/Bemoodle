@@ -3,7 +3,14 @@ import { getEnv } from "@/lib/utils";
 
 export const getSystemStatus = async () => {
     try {
-        const response = await fetch(getEnv().BEMOODLE_API_URL + STATUS_SERVLET);
+        const response = await fetch(
+            getEnv().BEMOODLE_API_URL + STATUS_SERVLET,
+    
+        {
+       
+            credentials: 'include',
+          
+        });
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

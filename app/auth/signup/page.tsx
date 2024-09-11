@@ -12,10 +12,41 @@ import { Eye, EyeOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 import { ScrollPanel } from 'primereact/scrollpanel';
-        
+import { doSignUp } from '@/api/direct/SignUp'
+import { useRouter } from 'next/navigation'
+
 const SignUp = () => {
+  const [display_name, setDisplay_name] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [viewPassword, setViewPassword] = useState(false);
+
+  //ERROR MESSAGE
+  const [error, setError] = useState<any>();
+
+  //NAVIGATION
+  const router = useRouter();
+
+  const handleSignUp = async () => {
+
+    const UserDTO = {
+      display_name,
+      username,
+      email,
+      password
+    }
+
+    const json: ResDTO = await doSignUp(UserDTO);
+    
+    if (json.success) {
+      console.log(json);
+      router.push("/auth/verify", {scroll:true});
+    } else {
+      setError(json.content);
+      console.log(json);
+    }
+  }
 
   return (
     <div className='w-full min-h-screen flex box-border pr-[480px] wide:pr-[680px] mobile:pr-0 mid:pr-0'>
@@ -45,16 +76,26 @@ const SignUp = () => {
               transition={{ duration: 1.2 }}
             >
               <div className='w-full mt-12 flex flex-col gap-5'>
-
+                {error && <div className='text-[14px] font-medium text-rose-500'>{error}</div>}
                 {/* NAME */}
                 <div className='grid grid-cols-2 gap-6'>
                   <div>
                     <div className='text-[14px] pb-2 opacity-60'>Display Name</div>
-                    <Input type='text' placeholder='Your Name' className='font-medium' />
+                    <Input type='text' placeholder='Your Name' className='font-medium' 
+                         onChange={(evt) => {
+                          evt.preventDefault;
+                          setDisplay_name(evt.target.value as string);
+                        }}
+                    />
                   </div>
                   <div>
                     <div className='text-[14px] pb-2 opacity-60'>Username</div>
-                    <Input type='text' placeholder='@username' className='font-medium' />
+                    <Input type='text' placeholder='@username' className='font-medium' 
+                          onChange={(evt) => {
+                            evt.preventDefault;
+                            setUsername(evt.target.value as string);
+                          }}
+                    />
                   </div>
                 </div>
 
@@ -62,26 +103,31 @@ const SignUp = () => {
                 {/* EMAIL */}
                 <div>
                   <div className='text-[14px] pb-2 opacity-60'>Email</div>
-                  <Input type='email' placeholder='you@domain.com' className='font-medium' />
+                  <Input type='email' placeholder='you@domain.com' className='font-medium' 
+                     onChange={(evt) => {
+                      evt.preventDefault;
+                      setEmail(evt.target.value as string);
+                    }}
+                  />
                 </div>
 
                 <div>
-                <div className='text-[14px] pb-2 opacity-60'>Password</div>
-                <div className='w-full relative'>
-                  <Input
-                    type={viewPassword ? "text" : "password"}
-                    placeholder="Must be least 8 characters"
-                    onChange={(evt) => {
-                      evt.preventDefault;
-                      setPassword(evt.target.value as string);
-                    }}
-                  />
-                  {viewPassword ?
-                    <EyeOff onClick={() => setViewPassword(false)} className="w-[1rem] h-[1rem] absolute right-3 top-[10px] hover:opacity-60 transform transition-transform duration-300 cursor-pointer" />
-                    :
-                    <Eye onClick={() => setViewPassword(true)} className="w-[1rem] h-[1rem] absolute right-3 top-[10px] hover:opacity-60 transform transition-transform duration-300 cursor-pointer" />
-                  }
-                </div>
+                  <div className='text-[14px] pb-2 opacity-60'>Password</div>
+                  <div className='w-full relative'>
+                    <Input
+                      type={viewPassword ? "text" : "password"}
+                      placeholder="Must be least 8 characters"
+                      onChange={(evt) => {
+                        evt.preventDefault;
+                        setPassword(evt.target.value as string);
+                      }}
+                    />
+                    {viewPassword ?
+                      <EyeOff onClick={() => setViewPassword(false)} className="w-[1rem] h-[1rem] absolute right-3 top-[10px] hover:opacity-60 transform transition-transform duration-300 cursor-pointer" />
+                      :
+                      <Eye onClick={() => setViewPassword(true)} className="w-[1rem] h-[1rem] absolute right-3 top-[10px] hover:opacity-60 transform transition-transform duration-300 cursor-pointer" />
+                    }
+                  </div>
                 </div>
                 <div className='grid grid-cols-4 gap-[18px] w-full'>
                   <div className='w-full h-[6px] rounded-full bg-[#E8E8E8]'></div>
@@ -91,8 +137,8 @@ const SignUp = () => {
                 </div>
 
                 <div className='flex items-center justify-between pt-6'>
-                  <Link href={"/auth/login"} className='text-[12px] font-medium text-[#262626]'>Already a Member?</Link>
-                  <Button className='text-[12px]'>Sign Up</Button>
+                  <Link href={"/auth/signin"} className='text-[12px] font-medium text-[#262626]'>Already a Member?</Link>
+                  <Button className='text-[12px]' onClick={handleSignUp}>Sign Up</Button>
                 </div>
 
               </div>
