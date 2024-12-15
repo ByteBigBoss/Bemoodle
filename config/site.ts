@@ -8,23 +8,45 @@ export const SiteMetadata = {
     pages:{
         home:{
             title:"Home",
-            des: "The where all Artisans are gathered.",
+            description: "The where all Artisans are gathered.",
         },
         signin:{
             title:"Bemoodle | SignIn",
-            des: "Login to your Bemoodle account.",
+            description: "Login to your Bemoodle account.",
         },
         signup:{
             title:"Bemoodle | SignUp",
-            des: "Create a new Bemoodle account to continue.",
+            description: "Create a new Bemoodle account to continue.",
         },
         verify:{
             title:"Bemoodle | Account Verification",
-            des: "Verify your Bemoodle Account to be verfied user.",
+            description: "Verify your Bemoodle Account to be verfied user.",
         },
         stores:{
             title:"Bemoodle | Stores",
-            des:  "Open & Sell Your Works in Your Own Store.",
+            description:  "Open & Sell Your Works in Your Own Store.",
+        },
+        marketplace:{
+            title:"Bemoodle | Marketplace",
+            description:  "Find your favorite Bemoodle!",
+        },
+        checkout:{
+            title:"Bemoodle | Checkout",
+            description:  "Pay for your moodles!",
+        },
+        profile:{
+            title:"Bemoodle | Profile",
+            description:  "Your Bemoodle profile",
+        },
+        categories:{
+            title:"Bemoodle | Categories",
+            description:  "The Bemoodle Category Pool",
         }
     }
+}
+
+export const ComingSoonContent = {
+    title:"Bemoodle",
+    subtitle:"We building new moodle spaces... Stay Tuned!",
+    time:"2025-2-15",
 }

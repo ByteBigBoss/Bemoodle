@@ -3,11 +3,10 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: SiteMetadata.pages.stores.title,
-  description: SiteMetadata.pages.stores.des,
+  ...SiteMetadata.pages.stores
 };
 
-export default function SignUpLayout({
+export default function StoreLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

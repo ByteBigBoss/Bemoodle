@@ -16,3 +16,5 @@ export const getEnv = () => {
     BEMOODLE_API_URL,
   };
 };
+
+export const BEMOODLE_API = "http://localhost:8080/Bemoodle"

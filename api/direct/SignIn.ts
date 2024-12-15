@@ -1,36 +1,30 @@
 import { SIGN_IN } from "@/lib/endpoints";
-import { getEnv } from "@/lib/utils";
+import { BEMOODLE_API, getEnv } from "@/lib/utils";
 
-export const doSignIn = async ({username,email,password}:SignInDTO) => {
-
-    const UserDTO = {
-        username: username,
-        email: email,
-        password: password,
-    }
+export const doSignIn = async ({ username, email, password }: SignInDTO) => {
+    const userDTO = { username, email, password };
 
     try {
 
-        const response = await fetch(
-            getEnv().BEMOODLE_API_URL + SIGN_IN,
+        const response = await fetch(`${BEMOODLE_API}/${SIGN_IN}`,
             {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(UserDTO),
+                body: JSON.stringify(userDTO),
             });
 
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            const errorDetails = await response.text();
+            throw new Error(`Sign-in failed: ${response.status}. Details: ${errorDetails}`);
         }
 
-        const json = await response.json();
-        return json;
+        return await response.json();
     } catch (error) {
-        console.error('Failed to process user registration:', error);
+        console.error('Failed to process user Sign In:', error);
         return null;
     }
 

@@ -1,8 +1,7 @@
+import FeaturedWorks from "@/components/home/FeaturedWorks";
 import Hero from "@/components/home/Hero";
 import MoodleCategories from "@/components/home/MoodleCategories";
 import OpenStore from "@/components/notify-bar/OpenStore";
-import ProductCard from "@/components/product/ProductCard";
-import CheckServlet from "@/components/system/CheckServlet";
 import { SiteMetadata } from "@/config/site";
 import { Metadata } from "next";
 
@@ -15,12 +14,11 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div>
-      <Hero/>
-      <OpenStore/>
-      <MoodleCategories/>
-        <ProductCard/>
-      <CheckServlet/>
+    <div className="pb-[80px]">
+      <Hero />
+      <OpenStore />
+      <MoodleCategories />
+      <FeaturedWorks />
     </div>
   )
 }

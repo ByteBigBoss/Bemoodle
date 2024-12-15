@@ -5,7 +5,7 @@ import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/foo/Footer";
 import { poppins } from "@/lib/fonts";
 import { SiteMetadata } from "@/config/site";
-
+import { Toaster } from "@/components/ui/toaster"
 import { PrimeReactProvider } from 'primereact/api';
 
 import "@/style/globals.css";
@@ -22,9 +22,17 @@ export default function RootLayout({
 
   const path = usePathname();
 
-  const restrictedPaths = ['/auth/signin', '/auth/signup', '/auth/verify', '/stores/[slug]/'];
+  const restrictedPaths = ['/auth/signin', '/auth/signup', '/auth/verify', '/stores/[store]/**', '/stores', '/checkout'];
 
-  const isRestrictedPath = restrictedPaths.includes(path);
+  const restrictedFooterPaths = ['/stores/[store]/'];
+  const isRestrictedFooterPath = restrictedFooterPaths.includes(path) || path.startsWith("/stores/");
+
+
+  const isRestrictedPath =
+  restrictedPaths.includes(path) || path.startsWith("/stores/");
+
+
+  
 
   return (
     <html lang="en"
@@ -48,8 +56,11 @@ export default function RootLayout({
             )}
             <TooltipProvider>
             <main className=' mx-auto w-full h-auto'>{children}</main>
+            <Toaster />
             </TooltipProvider>
-            <Footer />
+            {!isRestrictedFooterPath &&
+              <Footer />
+            }
           </PrimeReactProvider>
         </ThemeProvider>
 

@@ -28,7 +28,7 @@ export const doVerifyAccount = async ({verification}:VerifyDTO) => {
         const json = await response.json();
         return json;
     } catch (error) {
-        console.error('Failed to process user registration:', error);
+        console.error('Failed to process user verification:', error);
         return null;
     }
 

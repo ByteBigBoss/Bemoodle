@@ -1,6 +1,7 @@
 import React from 'react'
 import WrapperBody from '@/components/wrappers/WrapperBody'
 import MoodleButton from '@/components/common/MoodleButton'
+import Link from 'next/link'
 
 const OpenStore = () => {
   return (
@@ -19,7 +20,7 @@ const OpenStore = () => {
 
           <div className='flex items-center gap-[24px] mobile:gap-[12px] mobile:flex-col'>
           <div className='font-semibold text-center mobile:w-8/12 mobile:text-[20px]'><span className='Open Your Own '>Open Your Own </span><span className='text-moodleOrange opacity-100'>Bemoodle</span><span className='opacity-80'> Store Right Now!</span></div>
-          <MoodleButton variants='highlight'>Open Store</MoodleButton>
+          <Link href={"/stores"}><MoodleButton variants='highlight'>Open Store</MoodleButton></Link>
           </div>
         </div>
 
